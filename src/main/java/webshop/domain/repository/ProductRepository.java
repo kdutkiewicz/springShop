@@ -6,4 +6,5 @@ import webshop.domain.Product;
 
 public interface ProductRepository {
 	public List <Product> getAllProducts();
+	public Product getProductById(String productId);
 }
