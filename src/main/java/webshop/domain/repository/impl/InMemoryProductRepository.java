@@ -15,21 +15,21 @@ public class InMemoryProductRepository implements ProductRepository{
 	public InMemoryProductRepository(){
 		Product iPhone = new Product("P1234", "iphone 5s", new BigDecimal(500));
 		iPhone.setDescription("Apple bla bla bla");
-		iPhone.setCategory("Smart Phone");
+		iPhone.setCategory("SmartPhone");
 		iPhone.setManufacturer("Apple");
 		iPhone.setUnitsInStock(1000);
 		
 		Product laptop_dell = new Product("D1222", "dell 1r1", new BigDecimal(1500));
-		iPhone.setDescription("Dell bla bla bla");
-		iPhone.setCategory("Laptop");
-		iPhone.setManufacturer("Dell");
-		iPhone.setUnitsInStock(500);
+		laptop_dell.setDescription("Dell bla bla bla");
+		laptop_dell.setCategory("Laptop");
+		laptop_dell.setManufacturer("Dell");
+		laptop_dell.setUnitsInStock(500);
 		
 		Product tablet_nexus = new Product("ASD", "nexus 123", new BigDecimal(800));
-		iPhone.setDescription("Google bla bla bla");
-		iPhone.setCategory("Tablet");
-		iPhone.setManufacturer("Google");
-		iPhone.setUnitsInStock(7000);
+		tablet_nexus.setDescription("Google bla bla bla");
+		tablet_nexus.setCategory("Tablet");
+		tablet_nexus.setManufacturer("Google");
+		tablet_nexus.setUnitsInStock(7000);
 		
 		listOfProducts.add(iPhone);
 		listOfProducts.add(laptop_dell);
@@ -52,5 +52,15 @@ public class InMemoryProductRepository implements ProductRepository{
 			throw new IllegalArgumentException("Thers is not product with id= "+productId);
 		}
 		return productById;
+	}
+
+	public List<Product> getProductsByCategory(String category) {
+		List<Product> listOfProductsByCategory = new ArrayList<Product>();
+		for(Product p: listOfProducts){
+			if(category.equalsIgnoreCase(p.getCategory())){
+				listOfProductsByCategory.add(p);
+			}
+		}
+		return listOfProductsByCategory;
 	}
 }
