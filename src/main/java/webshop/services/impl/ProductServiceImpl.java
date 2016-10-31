@@ -36,4 +36,9 @@ public class ProductServiceImpl implements ProductService {
 		return productRepository.getProductsByManufacturer(manufacturer);
 	}
 
+	public void addProduct(Product product) {
+		productRepository.addProduct(product);
+		
+	}
+
 }
