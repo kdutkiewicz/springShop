@@ -7,9 +7,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import javax.management.RuntimeErrorException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.MatrixVariable;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -40,34 +46,46 @@ public class ProductController {
 
 	}
 
+	@InitBinder
+	public void initialiseBinder(WebDataBinder binder) {
+		binder.setDisallowedFields("unitsInOrder", "discontinued");
+	}
+
 	@RequestMapping("/{category}")
-	public String getProductsByCategory(Model model,
-			@PathVariable("category") String productCategory) {
+	public String getProductsByCategory(Model model, @PathVariable("category") String productCategory) {
 		model.addAttribute("products", productService.getProductsByCategory(productCategory));
 		return "products";
 	}
+
 	@RequestMapping("/filter/{ByCriteria}")
-	public String getProductsByFilter(@MatrixVariable(pathVar ="ByCriteria") 
-	Map<String, List<String>> filterParams, Model model){
+	public String getProductsByFilter(@MatrixVariable(pathVar = "ByCriteria") Map<String, List<String>> filterParams,
+			Model model) {
 		model.addAttribute("products", productService.getProductsByFilter(filterParams));
 		return "products";
 	}
+
 	@RequestMapping("/product")
-	public String getProductById(@RequestParam("id") String productId, Model model){
+	public String getProductById(@RequestParam("id") String productId, Model model) {
 		model.addAttribute("product", productService.getProductById(productId));
 		return "product";
 	}
+
 	@RequestMapping(value = "/add", method = RequestMethod.GET)
-	public String getAddNewProductForm(Model model){
+	public String getAddNewProductForm(Model model) {
 		Product product = new Product();
-		model.addAttribute("newProduct",product);		
+		model.addAttribute("newProduct", product);
 		return "addProduct";
 	}
-	@RequestMapping(value="/add", method = RequestMethod.POST)
-	public String processAddNewProductForm(@ModelAttribute("newProduct") 
-	Product newProduct){
+
+	@RequestMapping(value = "/add", method = RequestMethod.POST)
+	public String processAddNewProductForm(@ModelAttribute("newProduct") Product newProduct, BindingResult result) {
+		String[] suppressedFields = result.getSuppressedFields();
+		if (suppressedFields.length > 0) {
+			throw new RuntimeException(
+					"Wrong binding fields" + StringUtils.arrayToCommaDelimitedString(suppressedFields));
+		}
 		productService.addProduct(newProduct);
 		return "redirect:/products";
 	}
-	
+
 }
