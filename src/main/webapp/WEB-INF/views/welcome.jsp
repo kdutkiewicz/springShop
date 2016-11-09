@@ -18,5 +18,26 @@
 		</div>
 	</div>
 	</section>
+	<section class="container">
+	<div class="text-center">
+	<div class="col-sm-3">
+		<div class="thumbnail">
+
+			<a href="products/add"> <span class="glyphicon glyphicon-plus"></span>
+				ADD
+			</a>
+		</div>
+		</div>
+	</div>
+	<div class="text-center">
+			<div class="col-sm-3">
+				<div class="thumbnail ">
+					<a href="products"> <span class="glyphicon glyphicon-th"></span>All
+						products
+					</a>
+				</div>
+		</div>
+	</div>
+	</section>
 </body>
 </html>

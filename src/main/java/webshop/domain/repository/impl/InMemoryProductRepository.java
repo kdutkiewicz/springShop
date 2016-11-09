@@ -17,19 +17,19 @@ public class InMemoryProductRepository implements ProductRepository {
 	private List<Product> listOfProducts = new ArrayList<Product>();
 
 	public InMemoryProductRepository() {
-		Product iPhone = new Product("P1234", "iphone 5s", new BigDecimal(500));
+		Product iPhone = new Product("asd1", "iphone 5s", new BigDecimal(500));
 		iPhone.setDescription("Apple bla bla bla");
 		iPhone.setCategory("SmartPhone");
 		iPhone.setManufacturer("Apple");
 		iPhone.setUnitsInStock(1000);
 
-		Product laptop_dell = new Product("D1222", "dell 1r1", new BigDecimal(1500));
+		Product laptop_dell = new Product("asd2", "dell 1r1", new BigDecimal(1500));
 		laptop_dell.setDescription("Dell bla bla bla");
 		laptop_dell.setCategory("Laptop");
 		laptop_dell.setManufacturer("Dell");
 		laptop_dell.setUnitsInStock(500);
 
-		Product tablet_nexus = new Product("ASD", "nexus 123", new BigDecimal(800));
+		Product tablet_nexus = new Product("asd3", "nexus 123", new BigDecimal(800));
 		tablet_nexus.setDescription("Google bla bla bla");
 		tablet_nexus.setCategory("Tablet");
 		tablet_nexus.setManufacturer("Google");

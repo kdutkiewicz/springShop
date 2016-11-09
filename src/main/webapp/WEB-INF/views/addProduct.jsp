@@ -8,7 +8,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
-
+<link rel="stylesheet"
+	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
 </head>
 <body>
 	<section>
@@ -18,7 +19,7 @@
 			<p><spring:message code="addProduct.form.secondaryTitle.paragraph"/></p>
 
 		</div>
-		<a href="<c:url value="/j_spring_security_logout"></c:url>" class="btn btn-danger" value="Logout"/>
+		<a href="<c:url value="/j_spring_security_logout"></c:url>" class="btn btn-danger btn-mini pull-right " >Log out</a>
 	</div>
 	</section>
 	<section class="container"> <form:form
