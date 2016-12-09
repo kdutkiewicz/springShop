@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import webshop.domain.Product;
 import webshop.domain.repository.ProductRepository;
+import webstore.exception.ProductNotFoundException;
 
 @Repository
 public class InMemoryProductRepository implements ProductRepository {
@@ -53,7 +54,7 @@ public class InMemoryProductRepository implements ProductRepository {
 			}
 		}
 		if (productById == null) {
-			throw new IllegalArgumentException("Thers is not product with id= " + productId);
+			throw new ProductNotFoundException(productId);
 		}
 		return productById;
 	}

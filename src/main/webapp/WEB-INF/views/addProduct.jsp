@@ -16,14 +16,18 @@
 	<div class="jumbotron">
 		<div class="container">
 			<h1>Product</h1>
-			<p><spring:message code="addProduct.form.secondaryTitle.paragraph"/></p>
+			<p>
+				<spring:message code="addProduct.form.secondaryTitle.paragraph" />
+			</p>
 
 		</div>
-		<a href="<c:url value="/j_spring_security_logout"></c:url>" class="btn btn-danger btn-mini pull-right " >Log out</a>
+		<a href="<c:url value="/j_spring_security_logout"></c:url>"
+			class="btn btn-danger btn-mini pull-right ">Log out</a>
 	</div>
 	</section>
 	<section class="container"> <form:form
-		modelAttribute="newProduct" class="form-horizontal">
+		modelAttribute="newProduct" class="form-horizontal"
+		enctype="multipart/form-data">
 		<fileset> <legend>Add new product</legend>
 		<div class="form-group">
 			<label class="control-label col-lg-2" for="productId">Product
@@ -71,29 +75,12 @@
 					class="form:input-large" />
 			</div>
 		</div>
-		<!-- 
-		<div class="form-group">
-			<label class="control-label col-lg-2" for="unitsInOrder">Units
-				in order</label>
-			<div class="col-lg-2">
-				<form:input id="unitsInOrder" path="unitsInOrder" type="number"
-					class="form:input-large" />
-			</div>
-		</div>
- -->
 		<div class="form-group">
 			<label class="control-label col-lg-2" for="description">Description</label>
 			<div class="col=lg-10">
 				<form:textarea id="description" path="description" rows="2" />
 			</div>
 		</div>
-	<!-- 	<div class="form-group">
-			<label class="control-panel col-lg-2" for="discontinued">Discontinued</label>
-			<div class="col-lg-10">
-				<form:checkbox id="discontinued" path="discontinued" />
-			</div>
-		</div>
-		 -->
 		<div class="form-group">
 			<label class="control-label col-lg-2">Condition</label>
 			<div class="col-lg-10">
@@ -103,6 +90,21 @@
 				Old
 				<form:radiobutton path="condition" value="Refurbished" />
 				Refurbished
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="control-label col-lg-2" for="productImage">Photo
+				of product </label>
+			<div class="col-lg-10">
+				<form:input id="productImage" path="productImage" type="file"
+					class="form:input-large" />
+			</div>
+		</div>
+		<div class="form-grup">
+			<label class="control-label col-lg-2" for="productInstruction">Instruction</label>
+			<div class="col-lg-10">
+				<form:input class="form:input-large" id="productInstruction"
+					path="productInstruction" type="file" />
 			</div>
 		</div>
 		<div class="form-group">
